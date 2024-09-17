@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <title>ArcGIS Maps SDK for JavaScript Tutorials: Display a map</title>
+    <title>Mega Cities of the World</title>
 
     <style>
       html,
@@ -20,20 +20,28 @@
 <script src="https://js.arcgis.com/4.30/"></script>
 
 <script>
-    require(["esri/config", "esri/Map", "esri/views/MapView"], function(esriConfig, Map, MapView) {
+    require(["esri/config", "esri/Map", "esri/views/MapView","esri/layers/GeoJSONLayer"], function(esriConfig, Map, MapView,GeoJSONLayer) {
 
         esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurNAUgv3aeRUmzJ4ckMevLQJ-ltE0ZTG_Y3uTJVGBNgMa8vqFXyl8kR-SH-OuAfPNpgkC880sEguwKgAQf2EVbOH1LKK5KzLOrPdl50llh8ulb_hbRoWgxPQXipvz04IFOsb47ItshoweMLPMceDmynZ-XoNaYV_JLVMS-PY7cQJc6T-QUqOuVki5pyRkhKWFsIbNnzg0qA3SDtC1SK33s9M.AT1_HetaWxay";
         
           const map = new Map({
             basemap: "arcgis/streets" // Change basemap here
           });
+          
+          const geojsonLayer = new GeoJSONLayer({
+        url: MegaCities.geojson,
+        copyright: "Sounny"
+      });
 
         const view = new MapView({
           map: map,
           center: [-118.805, 34.027], // Longitude, latitude
           zoom: 13, // Zoom level
-          container: "viewDiv" // Div element
+          container: "viewDiv", // Div element
+          layers: [geojsonLayer]
         });
+
+
 
     });
   </script>
