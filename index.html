@@ -27,9 +27,11 @@
           const map = new Map({
             basemap: "arcgis/streets" // Change basemap here
           });
+
+          const url = "https://sounny.github.io/esrigeojson/MegaCities.geojson";
           
-          const geojsonLayer = new GeoJSONLayer({
-        url: MegaCities.geojson,
+        const geojsonLayer = new GeoJSONLayer({
+        url: url,
         copyright: "Sounny"
       });
 
